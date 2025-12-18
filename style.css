@@ -1,0 +1,293 @@
+/* Base styles */
+@font-face {
+	font-family: "Limkin";
+	src: url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.ttf") format(truetype),
+		 url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.woff") format(woff),
+		 url("https://toomuchtype.com/fonts/limkin/variable/TMT-LimkinVF.woff2") format(woff2);
+	font-weight: 100 900;
+}
+:root {
+	--pink: #ff0055;
+	--yellow: #ffd400;
+	--green: #00ff80;
+	--blue: #2b00ff;
+	--dark: #1E1F21;
+	--light: #C6C2B8;
+	--primary: var(--light);
+	scroll-behavior: smooth;
+	overscroll-behavior: none;
+}
+html[data-scrolling="true"] {
+	scroll-behavior: auto;
+	user-select: none;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Limkin", sans-serif;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+body {
+	font-size: 20px;
+	line-height: 1.1em;
+	font-weight: 200;
+	font-variation-settings: "wght" 200, "SRFF" 0;
+	background-color: var(--primary);
+	color: var(--dark);
+	text-wrap: pretty;
+}
+strong {
+	font-weight: 400;
+	font-variation-settings: "wght" 400, "SRFF" 0;
+}
+a {
+	color: inherit;
+	text-underline-offset: .2em;
+	text-decoration-thickness: 1px;
+}
+img, video, iframe {
+	max-width: 100%;
+	display: block;
+}
+
+/* Container */
+.container {
+	width: 100%;
+	display: flex;
+	height: calc(100dvh - 40px);
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+}
+html[data-scrolling="true"] .container {
+	scroll-snap-type: unset;
+}
+
+/* Headings */
+.heading {
+	display: flex;
+	flex-direction: column;
+	font-weight: 400;
+	font-variation-settings: "wght" 400, "SRFF" 0;
+	font-size: 72px;
+	letter-spacing: -0.05em;
+	line-height: 1em;
+	flex-grow: 1;
+}
+.heading-emboss {
+	color: color-mix(in hsl, black 10%, var(--primary) 90%);
+	text-shadow: 2px 2px 2px color-mix(in hsl, white 30%, var(--primary) 70%), -2px -2px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
+}
+.heading-deboss {
+	color: color-mix(in hsl, white 10%, var(--primary) 90%);
+	text-shadow: -2px -2px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 2px 2px 2px color-mix(in hsl, black 30%, var(--primary) 70%);	
+}
+.heading-align {
+	display: inline-block;
+	transform: translateX(-.19em);
+}
+
+/* Handles */
+.handle {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	box-shadow: inset 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+}
+.handle-1 {
+	top: 20px;
+	right: 20px;
+}
+.handle-2 {
+	bottom: 20px;
+	right: 20px;
+}
+.handle-3 {
+	bottom: 20px;
+	left: 20px;
+}
+.handle-4 {
+	top: 20px;
+	left: 20px;
+}
+
+/* Header */
+.header {
+	flex-shrink: 0;
+	position: relative;
+	max-width: 420px;
+	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%), 10px 10px 20px rgba(0,0,0,.25);
+	gap: .65em;
+	position: sticky;
+	left: 0;
+	z-index: 1;
+	background-color: var(--primary);
+}
+.header-content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 60px;
+	gap: 30px;
+	overflow: scroll;
+}
+
+/* Nav */
+.nav {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 6px;
+	font-size: 12px;
+	line-height: 1em;
+	font-weight: 400;
+	font-variation-settings: "wght" 400, "SRFF" 0;
+}
+.nav-link {
+	flex-shrink: 0;
+	text-decoration: none;
+	display: grid;
+	grid-template-columns: 24px 1fr;
+	align-items: center;
+	color: var(--light);
+	gap: 4px;
+	justify-items: start;
+}
+.nav-link-number {
+	width: 24px;
+	height: 24px;
+	font-size: 12px;
+	padding-top: .2em;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	color: var(--dark);
+	box-shadow: inset -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, white 30%, var(--primary) 70%);
+}
+.nav-link-name {
+	padding-top: .2em;
+	height: 24px;
+	letter-spacing: .2em;
+	display: flex;
+	align-items: center;
+	border-radius: 12px;
+	padding: .2em 10px 0 10px;
+	box-shadow: inset 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: var(--primary);
+	transition: background-color .2s, box-shadow .2s;
+}
+.nav-link:hover .nav-link-name {
+	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+}
+.nav-link:active .nav-link-name {
+	box-shadow: inset -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, black 10%, var(--primary) 90%);
+}
+
+/* Index */
+.index {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 420px;
+	background-color: var(--light);
+	padding-right: calc(100vw - 840px);
+	scroll-snap-align: start;
+}
+.index-item {
+	position: relative;
+	display: flex;
+	background-color: var(--primary);
+	box-shadow: inset 15px 15px 30px color-mix(in hsl, white 30%, var(--primary) 70%), inset -15px -15px 30px color-mix(in hsl, black 30%, var(--primary) 70%);
+	color: var(--light);
+	overflow: hidden;
+	scroll-snap-align: start;
+	scroll-margin: 420px;
+}
+.index-item-content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	padding: 60px;
+	gap: 30px;
+}
+.index-item-content p {
+	text-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+
+/* Index item content */
+.index-item-desc {
+	display: flex;
+	flex-direction: column;
+}
+.index-item-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 30px;
+	font-size: 12px;
+	line-height: 1em;
+	letter-spacing: .2em;
+	padding: 20px calc(20px - .2em) calc(20px - .2em) 20px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-variation-settings: "wght" 400, "SRFF" 0;
+	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%), -10px -10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), 10px 10px 20px color-mix(in hsl, black 30%, var(--primary) 70%);
+	transition: background-color .2s, box-shadow .2s;
+}
+.index-item-link:hover {
+	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+}
+.index-item-link:active {
+	background-color: color-mix(in hsl, black 10%, var(--primary) 90%);
+	box-shadow: inset -10px -10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset 10px 10px 20px color-mix(in hsl, black 30%, var(--primary) 70%), 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%);
+}
+
+/* Scrollbar */
+.scrollbar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	--primary: #716f69;
+	background-color: var(--primary);
+	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%);
+	cursor: pointer;
+}
+.scrollbar-handle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	padding: 5px;
+}
+.scrollbar-handle-center {
+	width: 100%;
+	height: 100%;
+	background-color: var(--dark);
+	border-radius: 50%;
+	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--dark) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--dark) 70%);
+	transition: background-color .2s, box-shadow .2s;
+}
+.scrollbar-handle:hover .scrollbar-handle-center {
+	background-color: var(--light);
+	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--light) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--light) 70%);
+}
+.scrollbar-handle:active .scrollbar-handle-center {
+	background-color: var(--light);
+	box-shadow: inset -5px -5px 10px color-mix(in hsl, white 30%, var(--light) 70%), inset 5px 5px 10px color-mix(in hsl, black 30%, var(--light) 70%);
+}
