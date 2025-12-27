@@ -13,7 +13,9 @@
 	--blue: #2b00ff;
 	--dark: #1E1F21;
 	--light: #C6C2B8;
+	--gray: #938e83;
 	--primary: var(--light);
+	--secondary: var(--gray);
 	scroll-behavior: smooth;
 	overscroll-behavior: none;
 }
@@ -35,7 +37,7 @@ body {
 	line-height: 1.1em;
 	font-weight: 200;
 	font-variation-settings: "wght" 200, "SRFF" 0;
-	background-color: var(--primary);
+	background-color: var(--light);
 	color: var(--dark);
 	text-wrap: pretty;
 }
@@ -75,6 +77,7 @@ html[data-scrolling="true"] .container {
 	letter-spacing: -0.05em;
 	line-height: 1em;
 	flex-grow: 1;
+	mix-blend-mode: hard-light;
 }
 .heading-emboss {
 	color: color-mix(in hsl, black 10%, var(--primary) 90%);
@@ -95,24 +98,31 @@ html[data-scrolling="true"] .container {
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
-	box-shadow: inset 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
-	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+	mix-blend-mode: hard-light;
 }
 .handle-1 {
-	top: 20px;
-	right: 20px;
+	top: 15px;
+	right: 15px;
+	box-shadow: inset 4px 4px 8px color-mix(in hsl, white 30%, var(--primary) 70%), inset -4px -4px 8px color-mix(in hsl, black 30%, var(--secondary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--secondary) 90%);
 }
 .handle-2 {
-	bottom: 20px;
-	right: 20px;
+	bottom: 15px;
+	right: 15px;
+	box-shadow: inset 4px 4px 8px color-mix(in hsl, white 30%, var(--secondary) 70%), inset -4px -4px 8px color-mix(in hsl, black 30%, var(--secondary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--secondary) 90%);
 }
 .handle-3 {
-	bottom: 20px;
-	left: 20px;
+	bottom: 15px;
+	left: 15px;
+	box-shadow: inset 4px 4px 8px color-mix(in hsl, white 30%, var(--primary) 70%), inset -4px -4px 8px color-mix(in hsl, black 30%, var(--secondary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--secondary) 90%);
 }
 .handle-4 {
-	top: 20px;
-	left: 20px;
+	top: 15px;
+	left: 15px;
+	box-shadow: inset 4px 4px 8px color-mix(in hsl, white 30%, var(--primary) 70%), inset -4px -4px 8px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
 }
 
 /* Header */
@@ -120,12 +130,14 @@ html[data-scrolling="true"] .container {
 	flex-shrink: 0;
 	position: relative;
 	max-width: 420px;
-	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%), 10px 10px 20px rgba(0,0,0,.25);
+	box-shadow: inset 30px 30px 60px color-mix(in hsl, white 30%, var(--primary) 70%), inset -30px -30px 60px color-mix(in hsl, black 30%, var(--primary) 70%), 30px 30px 60px rgba(0,0,0,.25);
 	gap: .65em;
 	position: sticky;
 	left: 0;
 	z-index: 1;
-	background-color: var(--primary);
+	backdrop-filter: blur(40px);
+	-webkit-backdrop-filter: blur(40px);
+	background-color: hsla(43, 11%, 75%, .5);
 }
 .header-content {
 	width: 100%;
@@ -141,54 +153,56 @@ html[data-scrolling="true"] .container {
 .nav {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	gap: 6px;
+	gap: 4px;
 	font-size: 12px;
 	line-height: 1em;
 	font-weight: 400;
 	font-variation-settings: "wght" 400, "SRFF" 0;
 }
 .nav-link {
+	--primary: var(--gray);
 	flex-shrink: 0;
 	text-decoration: none;
 	display: grid;
-	grid-template-columns: 24px 1fr;
+	grid-template-columns: 28px 1fr;
 	align-items: center;
-	color: var(--light);
-	gap: 4px;
-	justify-items: start;
+	color: var(--dark);
+	border-radius: 16px;
+	transition: background-color .2s, color .2s, box-shadow .2s;
+	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--primary) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--primary) 70%);
 }
 .nav-link-number {
-	width: 24px;
-	height: 24px;
+	width: 28px;
+	height: 28px;
 	font-size: 12px;
 	padding-top: .2em;
 	text-align: center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 12px;
+	border-radius: 50%;
 	color: var(--dark);
-	box-shadow: inset -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
-	background-color: color-mix(in hsl, white 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--secondary) 90%);
+	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--secondary) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--secondary) 70%);
 }
 .nav-link-name {
 	padding-top: .2em;
-	height: 24px;
+	height: 28px;
 	letter-spacing: .2em;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	text-align: center;
 	border-radius: 12px;
-	padding: .2em 10px 0 10px;
-	box-shadow: inset 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
-	background-color: var(--primary);
-	transition: background-color .2s, box-shadow .2s;
+	padding: .2em 10px 0 5px;
 }
-.nav-link:hover .nav-link-name {
-	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+.nav-link:hover {
+	background-color: var(--secondary);
+	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--secondary) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--secondary) 70%);
 }
-.nav-link:active .nav-link-name {
-	box-shadow: inset -1px -1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), inset 1px 1px 2px color-mix(in hsl, black 30%, var(--primary) 70%), 1px 1px 2px color-mix(in hsl, white 30%, var(--primary) 70%), -1px -1px 2px color-mix(in hsl, black 30%, var(--primary) 70%);
-	background-color: color-mix(in hsl, black 10%, var(--primary) 90%);
+.nav-link:active {
+	box-shadow: inset -2px -2px 2px color-mix(in hsl, white 30%, var(--secondary) 70%), inset 2px 2px 2px color-mix(in hsl, black 30%, var(--secondary) 70%);
 }
 
 /* Index */
@@ -196,16 +210,18 @@ html[data-scrolling="true"] .container {
 	display: grid;
 	grid-auto-flow: column;
 	grid-auto-columns: 420px;
-	background-color: var(--light);
 	padding-right: calc(100vw - 840px);
 	scroll-snap-align: start;
+	background: linear-gradient(to right, var(--light), var(--dark));
+	box-shadow: inset -30px -30px 60px color-mix(in hsl, black 30%, var(--dark) 70%), inset 30px 30px 60px color-mix(in hsl, black 30%, var(--dark) 70%);
 }
 .index-item {
+	--primary: var(--gray);
 	position: relative;
 	display: flex;
-	background-color: var(--primary);
-	box-shadow: inset 15px 15px 30px color-mix(in hsl, white 30%, var(--primary) 70%), inset -15px -15px 30px color-mix(in hsl, black 30%, var(--primary) 70%);
-	color: var(--light);
+	background: linear-gradient(to bottom, var(--primary), var(--secondary));
+	box-shadow: inset 30px 30px 60px color-mix(in hsl, white 30%, var(--primary) 70%), inset -30px -30px 60px color-mix(in hsl, black 30%, var(--secondary) 70%);
+	color: var(--dark);
 	overflow: hidden;
 	scroll-snap-align: start;
 	scroll-margin: 420px;
@@ -219,9 +235,6 @@ html[data-scrolling="true"] .container {
 	overflow-y: scroll;
 	padding: 60px;
 	gap: 30px;
-}
-.index-item-content p {
-	text-shadow: 0 0 5px rgba(0,0,0,.1);
 }
 
 /* Index item content */
@@ -243,15 +256,16 @@ html[data-scrolling="true"] .container {
 	text-transform: uppercase;
 	font-weight: 400;
 	font-variation-settings: "wght" 400, "SRFF" 0;
-	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%), -10px -10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), 10px 10px 20px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, white 10%, var(--secondary) 90%);
+	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--secondary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--secondary) 70%), -10px -10px 20px color-mix(in hsl, white 30%, var(--secondary) 70%), 10px 10px 20px color-mix(in hsl, black 30%, var(--secondary) 70%);
 	transition: background-color .2s, box-shadow .2s;
 }
 .index-item-link:hover {
-	background-color: color-mix(in hsl, white 10%, var(--primary) 90%);
+	background-color: color-mix(in hsl, white 30%, var(--secondary) 70%);
 }
 .index-item-link:active {
-	background-color: color-mix(in hsl, black 10%, var(--primary) 90%);
-	box-shadow: inset -10px -10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset 10px 10px 20px color-mix(in hsl, black 30%, var(--primary) 70%), 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%);
+	background-color: color-mix(in hsl, black 10%, var(--secondary) 90%);
+	box-shadow: inset -10px -10px 20px color-mix(in hsl, white 30%, var(--secondary) 70%), inset 10px 10px 20px color-mix(in hsl, black 30%, var(--secondary) 70%), 10px 10px 20px color-mix(in hsl, white 30%, var(--secondary) 70%), -10px -10px 20px color-mix(in hsl, black 30%, var(--secondary) 70%);
 }
 
 /* Scrollbar */
@@ -261,9 +275,10 @@ html[data-scrolling="true"] .container {
 	left: 0;
 	right: 0;
 	height: 40px;
-	--primary: #716f69;
-	background-color: var(--primary);
-	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--primary) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--primary) 70%);
+	--primary: #4e717b;
+	--secondary: #582822;
+	background: linear-gradient(to right, var(--light), var(--dark));
+	box-shadow: inset 10px 10px 20px color-mix(in hsl, white 30%, var(--light) 70%), inset -10px -10px 20px color-mix(in hsl, black 30%, var(--dark) 70%);
 	cursor: pointer;
 }
 .scrollbar-handle {
@@ -278,16 +293,17 @@ html[data-scrolling="true"] .container {
 .scrollbar-handle-center {
 	width: 100%;
 	height: 100%;
-	background-color: var(--dark);
-	border-radius: 50%;
-	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--dark) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--dark) 70%);
-	transition: background-color .2s, box-shadow .2s;
-}
-.scrollbar-handle:hover .scrollbar-handle-center {
 	background-color: var(--light);
+	border-radius: 50%;
+	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--light) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--light) 70%);
+	transition: background-color .2s, box-shadow .2s;
+	mix-blend-mode: hard-light;
+}
+.scrollbar:hover .scrollbar-handle-center {
+	background-color: white;
 	box-shadow: inset 5px 5px 10px color-mix(in hsl, white 30%, var(--light) 70%), inset -5px -5px 10px color-mix(in hsl, black 30%, var(--light) 70%);
 }
-.scrollbar-handle:active .scrollbar-handle-center {
+.scrollbar:active .scrollbar-handle-center {
 	background-color: var(--light);
 	box-shadow: inset -5px -5px 10px color-mix(in hsl, white 30%, var(--light) 70%), inset 5px 5px 10px color-mix(in hsl, black 30%, var(--light) 70%);
 }
